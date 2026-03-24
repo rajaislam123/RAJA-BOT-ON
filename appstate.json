@@ -1,4 +1,39 @@
-datr=D5_8aOMPl_kJY-OWWCeem1dn; sb=D5_8aOBi6rdYDb9iUvEXJU4Q; m_pixel_ratio=1.7000000476837158; wd=424x942; c_user=61579363806006; fr=0VklknsgAyTu8GZs8.AWcAKWVZfELclQS9MDY62pHNpIPpUXedkHm4D1SvoM4n82EYTpk.Bo_J8P..AAA.0.0.Bo_J8q.AWffdkVQJf_lU1RtxYujGxj6THk; xs=17%3ANkVPRB2I-SuyeA%3A2%3A1761386283%3A-1%3A-1....
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    # Step to check out the repository code
+    - uses: actions/checkout@v2
+
+    # Step to set up the specified Node.js version
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # Step to install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step to run the bot with the correct port
+    - name: Start the bot
+      env:
+        PORT: 8080
+      run: npm start; sb=D5_8aOBi6rdYDb9iUvEXJU4Q; m_pixel_ratio=1.7000000476837158; wd=424x942; c_user=61579363806006; fr=0VklknsgAyTu8GZs8.AWcAKWVZfELclQS9MDY62pHNpIPpUXedkHm4D1SvoM4n82EYTpk.Bo_J8P..AAA.0.0.Bo_J8q.AWffdkVQJf_lU1RtxYujGxj6THk; xs=17%3ANkVPRB2I-SuyeA%3A2%3A1761386283%3A-1%3A-1....
 
 
         𝐚dd 𝐲𝐨𝐮𝐫 𝐜𝟑𝐜 𝐅𝐛𝐬𝐭𝐚𝐭𝐞 𝐜𝐨𝐨𝐤𝐢𝐞 🍪
